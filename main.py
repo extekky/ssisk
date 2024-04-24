@@ -12,18 +12,15 @@ A_kk_isch = ATC_2_3_intense + ATC_4_5_intense + ATC_6_7_intense
 A_ats_2_3_ycc = ATC_2_3_intense * 0.03
 A_ats_4_5_yss = ATC_4_5_intense * 0.03
 A_ats_6_7_yss = ATC_6_7_intense * 0.03
-# print(A_ats_2_3_ycc, A_ats_4_5_yss, A_ats_6_7_yss)
 
 # Интенсивности поступающей нагрузки на ЗУС и СПСС от всех АТС
 A_ats_2_3_zys = ATC_2_3[0] * a_zys
 A_ats_4_5_zys = ATC_4_5[0] * a_zys
 A_ats_6_7_zys = ATC_6_7[0] * a_zys
-# print(A_ats_2_3_zys, A_ats_4_5_zys, A_ats_6_7_zys)
 
 A_ats_2_3_spss_2g = A_ats_2_3_spss_4g = ATC_2_3[0] * a_spss * 0.5
 A_ats_4_5_spss_2g = A_ats_4_5_spss_4g = ATC_4_5[0] * a_spss * 0.5
 A_ats_6_7_spss_2g = A_ats_6_7_spss_4g = ATC_6_7[0] * a_spss * 0.5
-# print(A_ats_2_3_spss_2g, A_ats_4_5_spss_2g, A_ats_6_7_spss_2g)
 
 '''4.2 Расчёт интенсивности поступающей нагрузки от абонентов MSAN'''
 # -------------------------------------------MSAN 1-------------------------------------------
@@ -46,6 +43,7 @@ A_MSAN_1_isch = A_ata_MSAN_1 + A_sip_MSAN_1 + A_v_5_2_MSAN_1
 k_sip_MSAN_1 = A_sip_MSAN_1 / A_MSAN_1_isch
 
 # -------------------------------------------MSAN 2-------------------------------------------
+
 # Расчёт интенсивности поступающей нагрузки на MSAN2 от абонентов с аналоговыми телефонными аппаратами
 A_ata_MSAN_2 = a_ata * MSAN_2
 
@@ -68,11 +66,13 @@ k_sip_MSAN_2 = A_sip_MSAN_2 / A_MSAN_2_isch
 A_KP_isch = A_MSAN_1_isch + A_MSAN_2_isch
 
 # ------------------------------Интенсивность нагрузки от MSAN к УCC---------------------------
+
 # Нагрузка в направлении к УСС для каждого MSAN составляет 3% от исходящей нагрузки:
 A_MSAN_1_ycc = 0.03 * A_MSAN_1_isch
 A_MSAN_2_ycc = 0.03 * A_MSAN_2_isch
 
 # ----------------Интенсивность исходящей нагрузки от абонентов MSAN к ЗУС и СПСС--------------
+
 N_MSAN_1 = MSAN_1 + N_v_5_2_MSAN_1 + N_sip_MSAN_1 + n_LAN * N_LAN
 N_MSAN_2 = MSAN_2 + N_upats + N_sip_MSAN_2
 
@@ -84,12 +84,11 @@ A_MSAN_2_zys = N_MSAN_2 * a_zys
 
 # Интенсивность нагрузки к СПСС от MSAN1 составит
 A_MSAN_1_spss = N_MSAN_1 * a_spss
-A_MSAN_1_spss_2g = A_MSAN_1_spss_4g = 39.75  # ?? Какого хрена
+A_MSAN_1_spss_2g = A_MSAN_1_spss_4g = A_MSAN_1_spss / 2
 
 # Интенсивность нагрузки к СПСС от MSAN2 составит
 A_MSAN_2_spss = N_MSAN_2 * a_spss
-A_MSAN_2_spss_2g = 32.62  # ?? Какого хрена
-A_MSAN_2_spss_4g = 32.63  # ?? Какого хрена
+A_MSAN_2_spss_2g = A_MSAN_2_spss_4g = A_MSAN_2_spss / 2
 
 # Суммарная интенсивность исходящей и входящей нагрузок между MSAN1, MSAN2 и ЗУСМгМн, поступающих на MGW
 A_MSAN_zys_MGW = (A_MSAN_1_zys + A_MSAN_2_zys) * 2
@@ -119,6 +118,11 @@ A_6_7_4_5 = ATC_6_7_intense * (ATC_4_5_intense / A_gts_isch)  # АТС - 6 7
 A_6_7_6_7 = ATC_6_7_intense * (ATC_6_7_intense / A_gts_isch)  # АТС - 6 7
 A_6_7_MSAN_1 = ATC_6_7_intense * (A_MSAN_1_isch / A_gts_isch)  # АТС - 6 7
 A_6_7_MSAN_2 = ATC_6_7_intense * (A_MSAN_2_isch / A_gts_isch)  # АТС - 6 7
+
+A_MSAN_1_MSAN_1 = A_MSAN_1_isch * (A_MSAN_1_isch / A_gts_isch)  # MSAN_1
+A_MSAN_1_MSAN_2 = A_MSAN_1_isch * (A_MSAN_2_isch / A_gts_isch)  # MSAN_1
+A_MSAN_2_MSAN_2 = A_MSAN_2_isch * (A_MSAN_2_isch / A_gts_isch)  # MSAN_2
+A_MSAN_2_MSAN_1 = A_MSAN_2_isch * (A_MSAN_1_isch / A_gts_isch)  # MSAN_2
 
 sum_gor_2_3 = sum([A_2_3_2_3, A_2_3_4_5, A_2_3_6_7, A_2_3_MSAN_1, A_2_3_MSAN_2])
 sum_gor_4_5 = sum([A_4_5_2_3, A_4_5_4_5, A_4_5_6_7, A_4_5_MSAN_1, A_4_5_MSAN_2])
@@ -183,3 +187,8 @@ SUM_zys = sum([A_ats_2_3_zys, A_ats_4_5_zys, A_ats_6_7_zys, A_MSAN_1_zys, A_MSAN
 SUM_spss_2 = sum([A_spss_2g_isch_atce_2_3 * 2, A_spss_2g_isch_atce_4_5 * 2, A_spss_2g_isch_atce_6_7 * 2, A_spss_2g_isch_MSAN_1 * 2, A_spss_2g_isch_MSAN_2 * 2])
 SUM_spss_2g = sum([A_spss_2g_isch_atce_2_3, A_spss_2g_isch_atce_4_5, A_spss_2g_isch_atce_6_7, A_spss_2g_isch_MSAN_1, A_spss_2g_isch_MSAN_2])
 SUM_spss_4g = sum([A_spss_2g_isch_atce_2_3, A_spss_2g_isch_atce_4_5, A_spss_2g_isch_atce_6_7, A_spss_2g_isch_MSAN_1, A_spss_2g_isch_MSAN_2])
+
+# Интенсивность исходящей нагрузки от абонентов СПСС2G к абонентам СПСС2G и к абонентам СПСС4G, а также от абонентов СПСС4G к абонентам СПСС4G и к абонентам СПСС2G
+A_spss_2g_spss_2g_isch = A_spss_2g_spss_4g_isch = A_spss_4g_spss_2g_isch = A_spss_4g_spss_4g_isch = (A_spss_2g_isch - SUM_spss_4g) / 2
+
+'''4.5 Расчёт числа цифровых соединительных линий (каналов) на направлениях межстанционной связи'''

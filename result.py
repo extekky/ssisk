@@ -45,14 +45,14 @@ data = [
     ['АТСЭ-2,3',A_2_3_2_3, A_2_3_4_5, A_2_3_6_7, A_2_3_MSAN_1, A_2_3_MSAN_2, sum_gor_2_3, A_ats_2_3_zys, A_ats_2_3_spss_2g, A_ats_2_3_spss_2g, A_ats_2_3_ycc],
     ['АТСЭ-4,5', A_4_5_2_3, A_4_5_4_5, A_4_5_6_7, A_4_5_MSAN_1, A_4_5_MSAN_2, sum_gor_4_5, A_ats_4_5_zys, A_ats_4_5_spss_2g, A_ats_4_5_spss_2g, A_ats_4_5_yss],
     ['АТСЭ-6,7', A_6_7_2_3, A_6_7_4_5, A_6_7_6_7, A_6_7_MSAN_1, A_6_7_MSAN_2, sum_gor_6_7, A_ats_6_7_zys, A_ats_6_7_spss_2g, A_ats_6_7_spss_2g, A_ats_6_7_yss],
-    ['MSAN1', A_2_3_MSAN_1, A_4_5_MSAN_1, A_6_7_MSAN_1, '?', '?','?', A_MSAN_1_zys, A_MSAN_1_spss_2g, A_MSAN_1_spss_2g, A_MSAN_1_ycc],
-    ['MSAN2', A_2_3_MSAN_2, A_4_5_MSAN_2, A_6_7_MSAN_2, '?', '?','?', A_MSAN_2_zys, A_MSAN_2_spss_4g, A_MSAN_2_spss_4g,A_MSAN_2_ycc],
-    ['Σ', sum_gor_2_3, sum_gor_4_5, sum_gor_6_7],
+    ['MSAN1', A_2_3_MSAN_1, A_4_5_MSAN_1, A_6_7_MSAN_1, A_MSAN_1_MSAN_1, A_MSAN_1_MSAN_2,A_MSAN_1_isch, A_MSAN_1_zys, A_MSAN_1_spss_2g, A_MSAN_1_spss_2g, A_MSAN_1_ycc],
+    ['MSAN2', A_2_3_MSAN_2, A_4_5_MSAN_2, A_6_7_MSAN_2, A_MSAN_2_MSAN_1, A_MSAN_2_MSAN_2,A_MSAN_2_isch, A_MSAN_2_zys, A_MSAN_2_spss_4g, A_MSAN_2_spss_4g,A_MSAN_2_ycc],
+    ['Σ', sum_gor_2_3, sum_gor_4_5, sum_gor_6_7, A_MSAN_1_isch, A_MSAN_2_isch, A_gts_isch],
     ['ЗУС', A_ats_2_3_zys, A_ats_4_5_zys, A_ats_6_7_zys, A_MSAN_1_zys, A_MSAN_2_zys, SUM_zys],
-    ['СПСС', A_spss_2g_isch_atce_2_3 * 2, A_spss_2g_isch_atce_4_5 * 2, A_spss_2g_isch_atce_6_7 * 2, A_spss_2g_isch_MSAN_1 * 2, A_spss_2g_isch_MSAN_2 * 2, SUM_spss_2],
-    ['СПСС2G', A_spss_2g_isch_atce_2_3, A_spss_2g_isch_atce_4_5, A_spss_2g_isch_atce_6_7, A_spss_2g_isch_MSAN_1, A_spss_2g_isch_MSAN_2, SUM_spss_2g],
-    ['СПСС4G', A_spss_2g_isch_atce_2_3, A_spss_2g_isch_atce_4_5, A_spss_2g_isch_atce_6_7, A_spss_2g_isch_MSAN_1, A_spss_2g_isch_MSAN_2, SUM_spss_4g],
-
+    ['СПСС', A_spss_2g_isch_atce_2_3 * 2, A_spss_2g_isch_atce_4_5 * 2, A_spss_2g_isch_atce_6_7 * 2, A_spss_2g_isch_MSAN_1 * 2, A_spss_2g_isch_MSAN_2 * 2, SUM_spss_2, A_spss_2g_zys, A_spss_4g_vhod-A_atce_MSAN_spss_2g, A_spss_4g_vhod-A_atce_MSAN_spss_2g, A_spss_2g_ycc * 2],
+    ['СПСС2G', A_spss_2g_isch_atce_2_3, A_spss_2g_isch_atce_4_5, A_spss_2g_isch_atce_6_7, A_spss_2g_isch_MSAN_1, A_spss_2g_isch_MSAN_2, SUM_spss_2g, A_spss_2g_zys / 2,A_spss_2g_spss_4g_vhod,A_spss_2g_spss_4g_vhod, A_spss_2g_ycc],
+    ['СПСС4G', A_spss_2g_isch_atce_2_3, A_spss_2g_isch_atce_4_5, A_spss_2g_isch_atce_6_7, A_spss_2g_isch_MSAN_1, A_spss_2g_isch_MSAN_2, SUM_spss_4g, A_spss_2g_zys / 2,A_spss_2g_spss_4g_vhod,A_spss_2g_spss_4g_vhod, A_spss_2g_ycc],
+    ['ЗУСМгМн','', '', '', '', '', '', '', A_spss_2g_zys_isch, A_spss_2g_zys_isch]
 ]
 
 print('\n\nТаблица 4.4')
